@@ -1,0 +1,198 @@
+const PRODUCTS = [
+  {
+    id: 'violet',
+    name: 'Violet',
+    filament: 'Magic Silk Rose Red–Royal Blue',
+    emoji: '🟣',
+    gradient: 'linear-gradient(135deg, #7c3aed, #be185d, #3b82f6)',
+    soon: false,
+  },
+  {
+    id: 'azure',
+    name: 'Azure',
+    filament: 'Silk Blue',
+    emoji: '🔵',
+    gradient: 'linear-gradient(135deg, #0ea5e9, #38bdf8, #7dd3fc)',
+    soon: false,
+  },
+  {
+    id: 'tangerine',
+    name: 'Tangerine',
+    filament: 'Magic Silk Yellow–Orange',
+    emoji: '🟠',
+    gradient: 'linear-gradient(135deg, #f59e0b, #f97316, #fbbf24)',
+    soon: false,
+  },
+  {
+    id: 'ash',
+    name: 'Ash',
+    filament: 'Silk Silver',
+    emoji: '⚪',
+    gradient: 'linear-gradient(135deg, #d1d5db, #9ca3af, #e5e7eb)',
+    soon: false,
+  },
+  {
+    id: 'fashionpink',
+    name: 'Fashion Pink',
+    filament: 'Matte Pink',
+    emoji: '🩷',
+    gradient: 'linear-gradient(135deg, #ec4899, #f472b6, #be185d)',
+    soon: false,
+  },
+  {
+    id: 'onyx',
+    name: 'Onyx',
+    filament: 'Silk Black',
+    emoji: '⚫',
+    gradient: 'linear-gradient(135deg, #1f2937, #374151, #111827)',
+    soon: false,
+  },
+  {
+    id: 'midnight',
+    name: 'Midnight',
+    filament: 'Magic Silk Black–Blue',
+    emoji: '🌑',
+    gradient: 'linear-gradient(135deg, #0f172a, #1e3a5f, #1e40af)',
+    soon: true,
+  },
+];
+
+const SIZES = {
+  big:   { label: 'Büyük Boy', dims: '22×13×18 cm', price: 4850 },
+  small: { label: 'Küçük Boy', dims: '22×13×12 cm', price: 4250 },
+};
+
+let cart = [];
+let activeProduct = null;
+let activeSize = null;
+
+function renderProducts() {
+  const grid = document.getElementById('products-grid');
+  grid.innerHTML = PRODUCTS.map(p => `
+    <div class="product-card" onclick="${p.soon ? '' : `openSizeModal('${p.id}')`}">
+      <div class="product-img" style="background: ${p.gradient}">
+        <div class="product-img-placeholder">${p.emoji}</div>
+      </div>
+      <div class="product-info">
+        ${p.soon ? '<span class="soon-badge">Yakında</span>' : ''}
+        <div class="product-name">${p.name}</div>
+        <div class="product-filament">${p.filament}</div>
+        ${!p.soon ? `
+        <div class="product-price-row">
+          <div class="product-prices">
+            <div class="product-price-sm">Küçük Boy — 4.250 ₺</div>
+            <div class="product-price-lg">Büyük Boy — 4.850 ₺</div>
+          </div>
+          <button class="product-add" onclick="event.stopPropagation(); openSizeModal('${p.id}')">+</button>
+        </div>` : '<div style="color:var(--muted);font-size:14px">Çok yakında...</div>'}
+      </div>
+    </div>
+  `).join('');
+}
+
+function openSizeModal(productId) {
+  activeProduct = PRODUCTS.find(p => p.id === productId);
+  activeSize = null;
+  document.querySelectorAll('.size-option').forEach(el => el.classList.remove('selected'));
+  document.getElementById('modal-color-name').textContent = activeProduct.name;
+  const preview = document.getElementById('modal-color-preview');
+  preview.style.background = activeProduct.gradient;
+  preview.textContent = activeProduct.emoji;
+  preview.style.fontSize = '100px';
+  document.getElementById('size-modal').classList.add('open');
+}
+
+function closeSizeModal() {
+  document.getElementById('size-modal').classList.remove('open');
+  activeProduct = null;
+  activeSize = null;
+}
+
+function selectSize(size) {
+  activeSize = size;
+  document.querySelectorAll('.size-option').forEach(el => el.classList.remove('selected'));
+  document.getElementById(`size-${size}`).classList.add('selected');
+}
+
+function addToCart() {
+  if (!activeSize) { alert('Lütfen bir boy seçin.'); return; }
+  const size = SIZES[activeSize];
+  cart.push({
+    product: activeProduct,
+    size: activeSize,
+    sizeLabel: size.label,
+    price: size.price,
+  });
+  updateCartUI();
+  closeSizeModal();
+  toggleCart();
+}
+
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  updateCartUI();
+}
+
+function updateCartUI() {
+  const count = cart.length;
+  document.getElementById('cart-count').textContent = count;
+  const itemsEl = document.getElementById('cart-items');
+  const footerEl = document.getElementById('cart-footer');
+
+  if (count === 0) {
+    itemsEl.innerHTML = `<div class="cart-empty"><div class="cart-empty-icon">🛍</div><p>Sepetiniz boş</p></div>`;
+    footerEl.style.display = 'none';
+    return;
+  }
+
+  const total = cart.reduce((s, item) => s + item.price, 0);
+  itemsEl.innerHTML = cart.map((item, i) => `
+    <div class="cart-item">
+      <div class="cart-item-color" style="background:${item.product.gradient}">${item.product.emoji}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">Meli — ${item.product.name}</div>
+        <div class="cart-item-sub">${item.sizeLabel}</div>
+      </div>
+      <div class="cart-item-price">${item.price.toLocaleString('tr-TR')} ₺</div>
+      <button class="cart-item-remove" onclick="removeFromCart(${i})">✕</button>
+    </div>
+  `).join('');
+
+  document.getElementById('cart-total').textContent = total.toLocaleString('tr-TR') + ' ₺';
+  footerEl.style.display = 'block';
+}
+
+function toggleCart() {
+  const drawer = document.getElementById('cart-drawer');
+  const overlay = document.getElementById('cart-overlay');
+  drawer.classList.toggle('open');
+  overlay.classList.toggle('open');
+}
+
+function buildWhatsAppMessage(items) {
+  const lines = items.map(item =>
+    `• Meli ${item.product.name} — ${item.sizeLabel} — ${item.price.toLocaleString('tr-TR')} ₺`
+  );
+  const total = items.reduce((s, i) => s + i.price, 0);
+  return encodeURIComponent(
+    `Merhaba! Aşağıdaki ürünleri sipariş vermek istiyorum:\n\n${lines.join('\n')}\n\nToplam: ${total.toLocaleString('tr-TR')} ₺`
+  );
+}
+
+function orderWhatsApp() {
+  if (!activeSize) { alert('Lütfen bir boy seçin.'); return; }
+  const size = SIZES[activeSize];
+  const msg = encodeURIComponent(
+    `Merhaba! Şu ürünü sipariş vermek istiyorum:\n\n• Meli ${activeProduct.name} — ${size.label} — ${size.price.toLocaleString('tr-TR')} ₺`
+  );
+  window.open(`https://wa.me/905075829209?text=${msg}`, '_blank');
+}
+
+function checkoutWhatsApp() {
+  if (cart.length === 0) return;
+  const msg = buildWhatsAppMessage(cart);
+  window.open(`https://wa.me/905075829209?text=${msg}`, '_blank');
+}
+
+renderProducts();
+updateCartUI();
