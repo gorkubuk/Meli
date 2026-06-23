@@ -61,18 +61,6 @@ body {
   padding: 100px 40px 60px;
 }
 .hero-content { text-align: center; z-index: 2; position: relative; max-width: 600px; }
-.hero-tag {
-  display: inline-block; background: var(--pink-pale); color: var(--pink);
-  border: 1px solid #f9a8d4; border-radius: 20px; padding: 6px 16px;
-  font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
-  margin-bottom: 20px;
-}
-.hero-title {
-  font-size: clamp(72px, 12vw, 120px); font-weight: 800;
-  color: var(--pink); letter-spacing: -4px; line-height: 1;
-  margin-bottom: 8px;
-}
-.hero-flower { color: #7c3aed; }
 .hero-sub {
   font-family: 'Playfair Display', serif; font-style: italic;
   font-size: clamp(18px, 3vw, 24px); color: var(--muted);
@@ -118,27 +106,6 @@ body {
   text-decoration: none; transition: all .2s;
 }
 .btn-outline:hover { background: var(--pink); color: white; }
-.btn-whatsapp {
-  display: inline-block; background: #25d366; color: white;
-  border: none; border-radius: 30px; padding: 14px 32px;
-  font-family: 'Nunito', sans-serif; font-size: 16px; font-weight: 700;
-  cursor: pointer; text-decoration: none; transition: transform .2s;
-}
-.btn-whatsapp:hover { transform: translateY(-2px); }
-
-/* FEATURES */
-.features {
-  display: flex; justify-content: center; gap: 0;
-  background: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-}
-.feature {
-  flex: 1; text-align: center; padding: 32px 20px;
-  border-right: 1px solid var(--border);
-}
-.feature:last-child { border-right: none; }
-.feature-icon { font-size: 28px; margin-bottom: 8px; }
-.feature-title { font-weight: 800; font-size: 15px; color: var(--dark); margin-bottom: 4px; }
-.feature-desc { font-size: 13px; color: var(--muted); }
 
 /* COLLECTION */
 .collection { padding: 80px 40px; background: white; }
@@ -313,8 +280,6 @@ body {
   text-align: center; padding: 40px;
   background: var(--dark); color: rgba(255,255,255,0.5);
 }
-.footer-logo { font-size: 28px; font-weight: 800; color: var(--pink); margin-bottom: 8px; }
-.footer-logo span { color: #7c3aed; }
 .footer p { font-size: 13px; }
 
 /* LOGO */
@@ -337,6 +302,39 @@ body {
 .part-num { font-size: 12px; font-weight: 800; color: var(--pink); letter-spacing: 2px; margin-bottom: 6px; }
 .part-name { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 6px; }
 .part-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+/* CHECKOUT MODAL */
+.checkout-modal {
+  background: white; border-radius: 28px; max-width: 520px; width: 90%;
+  max-height: 90vh; overflow-y: auto; position: relative; padding: 32px;
+}
+.checkout-title { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 20px; }
+.checkout-items { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+.checkout-item-row {
+  display: flex; justify-content: space-between; align-items: center;
+}
+.checkout-item-name { font-size: 14px; color: var(--text); font-weight: 600; }
+.checkout-item-price { font-size: 14px; font-weight: 700; color: var(--pink); margin-left: 8px; white-space: nowrap; }
+.checkout-total-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  margin-bottom: 20px; font-size: 15px; font-weight: 700; color: var(--dark);
+}
+.checkout-total-row strong { color: var(--pink); font-size: 18px; }
+.checkout-form-group { margin-bottom: 12px; }
+.checkout-input {
+  width: 100%; padding: 12px 16px;
+  border: 1.5px solid var(--border); border-radius: 12px;
+  font-family: 'Nunito', sans-serif; font-size: 14px; color: var(--text);
+  outline: none; transition: border-color .2s; background: white;
+  box-sizing: border-box;
+}
+.checkout-input:focus { border-color: var(--pink); }
+.checkout-textarea { resize: none; height: 80px; display: block; }
+.checkout-success { text-align: center; padding: 20px 0; }
+.checkout-success-icon { font-size: 56px; color: var(--pink); margin-bottom: 16px; }
+.checkout-success h3 { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 10px; }
+.checkout-success p { color: var(--muted); font-size: 15px; line-height: 1.7; }
 
 /* RESPONSIVE */
 html, body { overflow-x: hidden; max-width: 100%; }
