@@ -51,7 +51,7 @@ const PRODUCTS = [
     id: 'midnight',
     name: 'Midnight',
     filament: 'Magic Silk YBlack-Blue',
-    img: 'images/part-form.png',
+    img: null,
     gradient: 'linear-gradient(135deg, #0f172a, #1e3a5f, #1e40af)',
     soon: true,
   },
