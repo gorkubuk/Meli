@@ -130,6 +130,43 @@
   <p>© 2025 Meli Handbags. Tüm hakları saklıdır.</p>
 </footer>
 
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkout-modal" onclick="closeCheckout()">
+  <div class="checkout-modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeCheckout()">✕</button>
+
+    <div id="checkout-form-view">
+      <h3 class="checkout-title">Sipariş Detayı</h3>
+      <div class="checkout-items" id="checkout-items-list"></div>
+      <div class="checkout-total-row">
+        <span>Toplam</span>
+        <strong id="checkout-total-display"></strong>
+      </div>
+      <form onsubmit="submitCheckout(event)">
+        <div class="checkout-form-group">
+          <input class="checkout-input" type="text" id="ck-name" placeholder="Ad Soyad *" required>
+        </div>
+        <div class="checkout-form-group">
+          <input class="checkout-input" type="tel" id="ck-phone" placeholder="Telefon *" required>
+        </div>
+        <div class="checkout-form-group">
+          <input class="checkout-input" type="email" id="ck-email" placeholder="E-posta *" required>
+        </div>
+        <div class="checkout-form-group">
+          <textarea class="checkout-input checkout-textarea" id="ck-address" placeholder="Teslimat Adresi *" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary btn-full">Ödemeye Geç →</button>
+      </form>
+    </div>
+
+    <div id="checkout-success-view" class="checkout-success" style="display:none">
+      <div class="checkout-success-icon">✿</div>
+      <h3>Teşekkürler!</h3>
+      <p>Siparişiniz alındı.<br>En kısa sürede sizinle iletişime geçeceğiz.</p>
+    </div>
+  </div>
+</div>
+
 <!-- SIZE MODAL -->
 <div class="modal-overlay" id="size-modal" onclick="closeSizeModal()">
   <div class="size-modal" onclick="event.stopPropagation()">
@@ -169,7 +206,7 @@
     <div class="cart-total">
       Toplam: <strong id="cart-total">0 ₺</strong>
     </div>
-    <button class="btn-primary btn-full" onclick="checkoutEmail()">
+    <button class="btn-primary btn-full" onclick="openCheckout()">
       Sipariş Ver
     </button>
   </div>
