@@ -3,7 +3,7 @@ const PRODUCTS = [
     id: 'violet',
     name: 'Violet',
     filament: 'Magic Silk Rose Red–Royal Blue',
-    emoji: '🟣',
+    img: 'images/violet.png',
     gradient: 'linear-gradient(135deg, #7c3aed, #be185d, #3b82f6)',
     soon: false,
   },
@@ -11,7 +11,7 @@ const PRODUCTS = [
     id: 'azure',
     name: 'Azure',
     filament: 'Silk Blue',
-    emoji: '🔵',
+    img: 'images/azure.png',
     gradient: 'linear-gradient(135deg, #0ea5e9, #38bdf8, #7dd3fc)',
     soon: false,
   },
@@ -19,7 +19,7 @@ const PRODUCTS = [
     id: 'tangerine',
     name: 'Tangerine',
     filament: 'Magic Silk Yellow–Orange',
-    emoji: '🟠',
+    img: 'images/tangerine.png',
     gradient: 'linear-gradient(135deg, #f59e0b, #f97316, #fbbf24)',
     soon: false,
   },
@@ -27,7 +27,7 @@ const PRODUCTS = [
     id: 'ash',
     name: 'Ash',
     filament: 'Silk Silver',
-    emoji: '⚪',
+    img: 'images/ash.png',
     gradient: 'linear-gradient(135deg, #d1d5db, #9ca3af, #e5e7eb)',
     soon: false,
   },
@@ -35,7 +35,7 @@ const PRODUCTS = [
     id: 'fashionpink',
     name: 'Fashion Pink',
     filament: 'Matte Pink',
-    emoji: '🩷',
+    img: 'images/fashionpink.png',
     gradient: 'linear-gradient(135deg, #ec4899, #f472b6, #be185d)',
     soon: false,
   },
@@ -43,7 +43,7 @@ const PRODUCTS = [
     id: 'onyx',
     name: 'Onyx',
     filament: 'Silk Black',
-    emoji: '⚫',
+    img: 'images/onyx.png',
     gradient: 'linear-gradient(135deg, #1f2937, #374151, #111827)',
     soon: false,
   },
@@ -51,7 +51,7 @@ const PRODUCTS = [
     id: 'midnight',
     name: 'Midnight',
     filament: 'Magic Silk Black–Blue',
-    emoji: '🌑',
+    img: null,
     gradient: 'linear-gradient(135deg, #0f172a, #1e3a5f, #1e40af)',
     soon: true,
   },
@@ -71,7 +71,9 @@ function renderProducts() {
   grid.innerHTML = PRODUCTS.map(p => `
     <div class="product-card" onclick="${p.soon ? '' : `openSizeModal('${p.id}')`}">
       <div class="product-img" style="background: ${p.gradient}">
-        <div class="product-img-placeholder">${p.emoji}</div>
+        ${p.img
+          ? `<img src="${p.img}" alt="${p.name}" loading="lazy">`
+          : `<div class="product-img-placeholder">✿</div>`}
       </div>
       <div class="product-info">
         ${p.soon ? '<span class="soon-badge">Yakında</span>' : ''}
@@ -97,8 +99,12 @@ function openSizeModal(productId) {
   document.getElementById('modal-color-name').textContent = activeProduct.name;
   const preview = document.getElementById('modal-color-preview');
   preview.style.background = activeProduct.gradient;
-  preview.textContent = activeProduct.emoji;
-  preview.style.fontSize = '100px';
+  if (activeProduct.img) {
+    preview.innerHTML = `<img src="${activeProduct.img}" alt="${activeProduct.name}" style="width:100%;height:100%;object-fit:cover;">`;
+  } else {
+    preview.innerHTML = '✿';
+    preview.style.fontSize = '80px';
+  }
   document.getElementById('size-modal').classList.add('open');
 }
 
@@ -148,7 +154,9 @@ function updateCartUI() {
   const total = cart.reduce((s, item) => s + item.price, 0);
   itemsEl.innerHTML = cart.map((item, i) => `
     <div class="cart-item">
-      <div class="cart-item-color" style="background:${item.product.gradient}">${item.product.emoji}</div>
+      <div class="cart-item-color" style="background:${item.product.gradient}">
+        ${item.product.img ? `<img src="${item.product.img}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">` : '✿'}
+      </div>
       <div class="cart-item-info">
         <div class="cart-item-name">Meli — ${item.product.name}</div>
         <div class="cart-item-sub">${item.sizeLabel}</div>
