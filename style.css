@@ -320,6 +320,7 @@ body {
 /* LOGO */
 .nav-logo-img { height: 48px; display: block; }
 .hero-logo { height: clamp(90px, 16vw, 160px); margin: 0 auto 16px; display: block; }
+.footer-logo-img { height: 56px; display: block; margin: 0 auto 12px; }
 
 /* 4 BOLUM */
 .parts { padding: 80px 40px; background: var(--cream); }
@@ -338,20 +339,27 @@ body {
 .part-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
 
 /* RESPONSIVE */
+html, body { overflow-x: hidden; max-width: 100%; }
+
 @media (max-width: 768px) {
   .nav { padding: 14px 20px; }
   .nav-links { display: none; }
-  .hero { padding: 80px 20px 40px; }
+  .hero { padding: 80px 20px 40px; min-height: auto; }
+  .hero-content { width: 100%; max-width: 100%; }
+  .hero-logo { height: clamp(70px, 30vw, 120px); }
   .hero-flowers { display: none; }
-  .features { flex-wrap: wrap; }
-  .feature { flex: 50%; border-right: none; border-bottom: 1px solid var(--border); }
-  .parts { padding: 60px 20px; }
-  .parts-grid { grid-template-columns: repeat(2, 1fr); }
-  .collection { padding: 60px 20px; }
-  .about { flex-direction: column; padding: 60px 20px; gap: 40px; }
+  .about { flex-direction: column; padding: 60px 20px; gap: 24px; }
+  .about-text { max-width: 100%; width: 100%; }
   .about-flowers { display: none; }
-  .contact { padding: 60px 20px; }
+  .parts { padding: 40px 20px; }
+  .parts-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .part-img { width: 100px; height: 100px; }
+  .collection { padding: 40px 20px; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .contact { padding: 40px 20px; }
+  .contact-cards { flex-direction: column; }
   .cart-drawer { width: 100vw; }
+  .size-modal { width: 95%; }
 }
 
 
