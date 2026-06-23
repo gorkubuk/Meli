@@ -1,4 +1,4 @@
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+﻿*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
   --cream: #faf5ef;
@@ -317,6 +317,26 @@ body {
 .footer-logo span { color: #7c3aed; }
 .footer p { font-size: 13px; }
 
+/* LOGO */
+.nav-logo-img { height: 36px; display: block; }
+.hero-logo { height: clamp(60px, 12vw, 100px); margin: 0 auto 12px; display: block; }
+
+/* 4 BOLUM */
+.parts { padding: 80px 40px; background: white; }
+.parts-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 24px; max-width: 1100px; margin: 0 auto;
+}
+.part-card { text-align: center; padding: 24px 16px; }
+.part-img {
+  width: 140px; height: 140px; margin: 0 auto 16px;
+  display: flex; align-items: center; justify-content: center;
+}
+.part-img img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.part-num { font-size: 12px; font-weight: 800; color: var(--pink); letter-spacing: 2px; margin-bottom: 6px; }
+.part-name { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 6px; }
+.part-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .nav { padding: 14px 20px; }
@@ -325,9 +345,12 @@ body {
   .hero-flowers { display: none; }
   .features { flex-wrap: wrap; }
   .feature { flex: 50%; border-right: none; border-bottom: 1px solid var(--border); }
+  .parts { padding: 60px 20px; }
+  .parts-grid { grid-template-columns: repeat(2, 1fr); }
   .collection { padding: 60px 20px; }
   .about { flex-direction: column; padding: 60px 20px; gap: 40px; }
   .about-flowers { display: none; }
   .contact { padding: 60px 20px; }
   .cart-drawer { width: 100vw; }
 }
+
