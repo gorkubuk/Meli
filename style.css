@@ -122,8 +122,8 @@ body {
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 28px; max-width: 1200px; margin: 0 auto;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px; max-width: 1200px; margin: 0 auto;
 }
 
 .product-card {
@@ -134,12 +134,12 @@ body {
 .product-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(232, 49, 122, 0.12); }
 
 .product-img {
-  width: 100%; height: 200px;
+  width: 100%; height: 220px;
   display: flex; align-items: center; justify-content: center;
   font-size: 80px; position: relative; overflow: hidden;
 }
 .product-img img {
-  width: 100%; height: 100%; object-fit: contain; padding: 12px;
+  width: 100%; height: 100%; object-fit: cover; object-position: center 15%;
 }
 .product-img-placeholder {
   width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
