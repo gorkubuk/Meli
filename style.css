@@ -277,7 +277,7 @@ body {
 /* ABOUT */
 .about {
   padding: 80px 40px;
-  background: linear-gradient(135deg, #fde8f1 0%, #f5e6f8 100%);
+  background: white;
   display: flex; align-items: center; justify-content: center; gap: 80px;
 }
 .about-text { max-width: 480px; }
@@ -319,7 +319,7 @@ body {
 
 /* LOGO */
 .nav-logo-img { height: 36px; display: block; }
-.hero-logo { height: clamp(60px, 12vw, 100px); margin: 0 auto 12px; display: block; }
+.hero-logo { height: clamp(90px, 16vw, 160px); margin: 0 auto 16px; display: block; }
 
 /* 4 BOLUM */
 .parts { padding: 80px 40px; background: white; }
