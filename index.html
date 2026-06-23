@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>meli — 3D Baskı Çantalar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-logo">meli<span class="nav-flower">✿</span></a>
+  <div class="nav-links">
+    <a href="#collection">Koleksiyon</a>
+    <a href="#about">Hakkında</a>
+    <a href="#contact">İletişim</a>
+  </div>
+  <button class="cart-btn" onclick="toggleCart()">
+    <span class="cart-icon">🛍</span>
+    <span class="cart-count" id="cart-count">0</span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-flowers hero-flowers-left">
+    <div class="flower f1">✿</div>
+    <div class="flower f2">✾</div>
+    <div class="flower f3">❀</div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-tag">Flora Koleksiyonu</div>
+    <h1 class="hero-title">meli<span class="hero-flower">✿</span></h1>
+    <p class="hero-sub">Çiçek Kızlar için Çiçek Çantalar</p>
+    <p class="hero-desc">Moda ile teknolojiyi buluşturan 3D baskı çantalar.<br>Doğanın formlarından ilham alan heykelsi tasarımlar.</p>
+    <a href="#collection" class="btn-primary">Koleksiyonu Keşfet</a>
+  </div>
+  <div class="hero-flowers hero-flowers-right">
+    <div class="flower f4">✿</div>
+    <div class="flower f5">❀</div>
+    <div class="flower f6">✾</div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="feature">
+    <div class="feature-icon">🌸</div>
+    <div class="feature-title">3D Baskı</div>
+    <div class="feature-desc">Heykelsi çiçek formları</div>
+  </div>
+  <div class="feature">
+    <div class="feature-icon">🌿</div>
+    <div class="feature-title">Makrome Sap</div>
+    <div class="feature-desc">Rahat tutuş, şık tasarım</div>
+  </div>
+  <div class="feature">
+    <div class="feature-icon">✨</div>
+    <div class="feature-title">İç Çanta</div>
+    <div class="feature-desc">Eşyaların düşmesini önler</div>
+  </div>
+  <div class="feature">
+    <div class="feature-icon">💐</div>
+    <div class="feature-title">Çiçek Süs</div>
+    <div class="feature-desc">Çıkarılabilir çanta süsü</div>
+  </div>
+</section>
+
+<!-- COLLECTION -->
+<section class="collection" id="collection">
+  <div class="section-header">
+    <div class="section-tag">Flora</div>
+    <h2 class="section-title">Koleksiyon</h2>
+    <p class="section-desc">Her renk, doğadan ilham alan bir hikaye anlatıyor</p>
+  </div>
+
+  <div class="products-grid" id="products-grid"></div>
+</section>
+
+<!-- SIZE MODAL -->
+<div class="modal-overlay" id="size-modal" onclick="closeSizeModal()">
+  <div class="size-modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeSizeModal()">✕</button>
+    <div class="size-modal-img-wrap">
+      <div class="size-modal-color-preview" id="modal-color-preview"></div>
+    </div>
+    <div class="size-modal-info">
+      <div class="size-modal-name" id="modal-color-name"></div>
+      <p class="size-modal-sub">Boy seçin</p>
+      <div class="size-options">
+        <div class="size-option" id="size-big" onclick="selectSize('big')">
+          <div class="size-option-name">Büyük Boy</div>
+          <div class="size-option-dims">22 × 13 × 18 cm</div>
+          <div class="size-option-price">4.850 ₺</div>
+        </div>
+        <div class="size-option" id="size-small" onclick="selectSize('small')">
+          <div class="size-option-name">Küçük Boy</div>
+          <div class="size-option-dims">22 × 13 × 12 cm</div>
+          <div class="size-option-price">4.250 ₺</div>
+        </div>
+      </div>
+      <button class="btn-primary btn-full" onclick="addToCart()">Sepete Ekle</button>
+      <button class="btn-whatsapp btn-full" onclick="orderWhatsApp()">
+        <span>WhatsApp ile Sipariş Ver</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cart-drawer">
+  <div class="cart-header">
+    <h3>Sepetim</h3>
+    <button onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="cart-footer" id="cart-footer" style="display:none">
+    <div class="cart-total">
+      Toplam: <strong id="cart-total">0 ₺</strong>
+    </div>
+    <button class="btn-whatsapp btn-full" onclick="checkoutWhatsApp()">
+      WhatsApp ile Sipariş Ver
+    </button>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-text">
+    <div class="section-tag">Hakkında</div>
+    <h2>Moda ile<br><em>teknolojiyi</em><br>buluşturuyoruz</h2>
+    <p>Meli, çiçek yapılarından ilham alarak doğanın izlerini çantalara taşıyor. 3D baskı ile üretilen heykelsi formlar, hem zarif hem de işlevsel bir deneyim sunuyor.</p>
+    <a href="https://instagram.com/meli_handbags" target="_blank" class="btn-outline">@meli_handbags</a>
+  </div>
+  <div class="about-flowers">
+    <div class="big-flower">✿</div>
+    <div class="med-flower">❀</div>
+    <div class="sm-flower">✾</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-header">
+    <div class="section-tag">İletişim</div>
+    <h2 class="section-title">İletişimde Kalalım</h2>
+  </div>
+  <div class="contact-cards">
+    <a href="https://instagram.com/meli_handbags" target="_blank" class="contact-card">
+      <div class="contact-icon">📷</div>
+      <div class="contact-label">Instagram</div>
+      <div class="contact-value">@meli_handbags</div>
+    </a>
+    <a href="tel:+905075829209" class="contact-card">
+      <div class="contact-icon">📞</div>
+      <div class="contact-label">Telefon</div>
+      <div class="contact-value">+90 507 582 92 09</div>
+    </a>
+    <a href="mailto:melihandbag@gmail.com" class="contact-card">
+      <div class="contact-icon">✉️</div>
+      <div class="contact-label">E-posta</div>
+      <div class="contact-value">melihandbag@gmail.com</div>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">meli<span>✿</span></div>
+  <p>© 2025 Meli Handbags. Tüm hakları saklıdır.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
