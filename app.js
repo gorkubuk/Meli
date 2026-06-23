@@ -81,10 +81,6 @@ function renderProducts() {
         <div class="product-filament">${p.filament}</div>
         ${!p.soon ? `
         <div class="product-price-row">
-          <div class="product-prices">
-            <div class="product-price-sm">Küçük Boy — 4.250 ₺</div>
-            <div class="product-price-lg">Büyük Boy — 4.850 ₺</div>
-          </div>
           <button class="product-add" onclick="event.stopPropagation(); openSizeModal('${p.id}')">+</button>
         </div>` : '<div style="color:var(--muted);font-size:14px">Çok yakında...</div>'}
       </div>
