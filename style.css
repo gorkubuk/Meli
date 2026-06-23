@@ -141,7 +141,7 @@ body {
 .feature-desc { font-size: 13px; color: var(--muted); }
 
 /* COLLECTION */
-.collection { padding: 80px 40px; }
+.collection { padding: 80px 40px; background: white; }
 .section-header { text-align: center; margin-bottom: 56px; }
 .section-tag {
   display: inline-block; font-family: 'Playfair Display', serif; font-style: italic;
@@ -293,7 +293,7 @@ body {
 .sm-flower { position: absolute; font-size: 50px; color: #f59e0b; opacity: 0.2; top: 50%; left: 50%; transform: translate(-50%,-50%); }
 
 /* CONTACT */
-.contact { padding: 80px 40px; }
+.contact { padding: 80px 40px; background: var(--cream); }
 .contact-cards {
   display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;
   max-width: 800px; margin: 0 auto;
@@ -322,7 +322,7 @@ body {
 .hero-logo { height: clamp(90px, 16vw, 160px); margin: 0 auto 16px; display: block; }
 
 /* 4 BOLUM */
-.parts { padding: 80px 40px; background: white; }
+.parts { padding: 80px 40px; background: var(--cream); }
 .parts-grid {
   display: grid; grid-template-columns: repeat(4, 1fr);
   gap: 24px; max-width: 1100px; margin: 0 auto;
