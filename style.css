@@ -220,7 +220,7 @@ body {
   width: 32px; height: 32px; cursor: pointer; font-size: 14px; color: var(--pink);
 }
 .size-modal-img-wrap {
-  height: 160px; display: flex; align-items: center; justify-content: center;
+  height: 110px; display: flex; align-items: center; justify-content: center;
   font-size: 100px; overflow: hidden;
 }
 .size-modal-color-preview { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 100px; }
@@ -318,7 +318,7 @@ body {
 .footer p { font-size: 13px; }
 
 /* LOGO */
-.nav-logo-img { height: 36px; display: block; }
+.nav-logo-img { height: 48px; display: block; }
 .hero-logo { height: clamp(90px, 16vw, 160px); margin: 0 auto 16px; display: block; }
 
 /* 4 BOLUM */
