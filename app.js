@@ -51,7 +51,7 @@ const PRODUCTS = [
     id: 'midnight',
     name: 'Midnight',
     filament: 'Magic Silk Black–Blue',
-    img: 'images/bag-form.png',
+    img: 'images/part-form.png',
     gradient: 'linear-gradient(135deg, #0f172a, #1e3a5f, #1e40af)',
     soon: true,
   },
@@ -173,35 +173,35 @@ function toggleCart() {
   overlay.classList.toggle('open');
 }
 
-function buildWhatsAppMessage(items) {
-  const lines = items.map(item =>
-    `• Meli ${item.product.name} — ${item.sizeLabel} — ${item.price.toLocaleString('tr-TR')} ₺`
-  );
-  const total = items.reduce((s, i) => s + i.price, 0);
-  return encodeURIComponent(
-    `Merhaba! Aşağıdaki ürünleri sipariş vermek istiyorum:\n\n${lines.join('\n')}\n\nToplam: ${total.toLocaleString('tr-TR')} ₺`
-  );
-}
-
-function orderWhatsApp() {
-  if (!activeSize) { alert('Lütfen bir boy seçin.'); return; }
-  const size = SIZES[activeSize];
-  const msg = encodeURIComponent(
-    `Merhaba! Şu ürünü sipariş vermek istiyorum:\n\n• Meli ${activeProduct.name} — ${size.label} — ${size.price.toLocaleString('tr-TR')} ₺`
-  );
-  window.open(`https://wa.me/905075829209?text=${msg}`, '_blank');
-}
-
-function checkoutEmail() {
+function openCheckout() {
   if (cart.length === 0) return;
-  const lines = cart.map(item =>
-    `- Meli ${item.product.name} / ${item.sizeLabel} / ${item.price.toLocaleString('tr-TR')} TL`
-  );
+  document.getElementById('cart-drawer').classList.remove('open');
+  document.getElementById('cart-overlay').classList.remove('open');
+
   const total = cart.reduce((s, i) => s + i.price, 0);
-  const body = encodeURIComponent(
-    `Merhaba,\n\nAşağıdaki ürünleri sipariş vermek istiyorum:\n\n${lines.join('\n')}\n\nToplam: ${total.toLocaleString('tr-TR')} TL\n\nTeşekkürler`
-  );
-  window.location.href = `mailto:melihandbag@gmail.com?subject=Sipariş&body=${body}`;
+  document.getElementById('checkout-items-list').innerHTML = cart.map(item => `
+    <div class="checkout-item-row">
+      <span class="checkout-item-name">Meli ${item.product.name} — ${item.sizeLabel}</span>
+      <span class="checkout-item-price">${item.price.toLocaleString('tr-TR')} ₺</span>
+    </div>
+  `).join('');
+  document.getElementById('checkout-total-display').textContent = total.toLocaleString('tr-TR') + ' ₺';
+  document.getElementById('checkout-form-view').style.display = 'block';
+  document.getElementById('checkout-success-view').style.display = 'none';
+  document.getElementById('checkout-modal').classList.add('open');
+}
+
+function closeCheckout() {
+  document.getElementById('checkout-modal').classList.remove('open');
+}
+
+function submitCheckout(e) {
+  e.preventDefault();
+  // Iyzico entegrasyonu buraya gelecek
+  document.getElementById('checkout-form-view').style.display = 'none';
+  document.getElementById('checkout-success-view').style.display = 'block';
+  cart = [];
+  updateCartUI();
 }
 
 renderProducts();
