@@ -1,4 +1,4 @@
-﻿﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
@@ -14,8 +14,8 @@
 <nav class="nav">
   <a href="#" class="nav-logo"><img src="images/logo.png" alt="meli" class="nav-logo-img"></a>
   <div class="nav-links">
-    <a href="#collection">Koleksiyon</a>
     <a href="#about">Hakkında</a>
+    <a href="#collection">Koleksiyon</a>
     <a href="#contact">İletişim</a>
   </div>
   <button class="cart-btn" onclick="toggleCart()">
@@ -45,31 +45,22 @@
   </div>
 </section>
 
-<!-- FEATURES -->
-<section class="features">
-  <div class="feature">
-    <div class="feature-icon">🌸</div>
-    <div class="feature-title">3D Baskı</div>
-    <div class="feature-desc">Heykelsi çiçek formları</div>
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-text">
+    <div class="section-tag">Hakkında</div>
+    <h2>Moda ile<br><em>teknolojiyi</em><br>buluşturuyoruz</h2>
+    <p>Meli, çiçek yapılarından ilham alarak doğanın izlerini çantalara taşıyor. 3D baskı ile üretilen heykelsi formlar, hem zarif hem de işlevsel bir deneyim sunuyor.</p>
+    <a href="https://instagram.com/meli_handbags" target="_blank" class="btn-outline">@meli_handbags</a>
   </div>
-  <div class="feature">
-    <div class="feature-icon">🌿</div>
-    <div class="feature-title">Makrome Sap</div>
-    <div class="feature-desc">Rahat tutuş, şık tasarım</div>
-  </div>
-  <div class="feature">
-    <div class="feature-icon">✨</div>
-    <div class="feature-title">İç Çanta</div>
-    <div class="feature-desc">Eşyaların düşmesini önler</div>
-  </div>
-  <div class="feature">
-    <div class="feature-icon">💐</div>
-    <div class="feature-title">Çiçek Süs</div>
-    <div class="feature-desc">Çıkarılabilir çanta süsü</div>
+  <div class="about-flowers">
+    <div class="big-flower">✿</div>
+    <div class="med-flower">❀</div>
+    <div class="sm-flower">✾</div>
   </div>
 </section>
 
-<!-- 4 BOLUM -->
+<!-- TASARIM -->
 <section class="parts" id="parts">
   <div class="section-header">
     <div class="section-tag">Tasarım</div>
@@ -111,9 +102,34 @@
     <h2 class="section-title">Koleksiyon</h2>
     <p class="section-desc">Her renk, doğadan ilham alan bir hikaye anlatıyor</p>
   </div>
-
   <div class="products-grid" id="products-grid"></div>
 </section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-header">
+    <div class="section-tag">İletişim</div>
+    <h2 class="section-title">İletişimde Kalalım</h2>
+  </div>
+  <div class="contact-cards">
+    <a href="https://instagram.com/meli_handbags" target="_blank" class="contact-card">
+      <div class="contact-icon">📷</div>
+      <div class="contact-label">Instagram</div>
+      <div class="contact-value">@meli_handbags</div>
+    </a>
+    <a href="mailto:melihandbag@gmail.com" class="contact-card">
+      <div class="contact-icon">✉️</div>
+      <div class="contact-label">E-posta</div>
+      <div class="contact-value">melihandbag@gmail.com</div>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">meli<span>✿</span></div>
+  <p>© 2025 Meli Handbags. Tüm hakları saklıdır.</p>
+</footer>
 
 <!-- SIZE MODAL -->
 <div class="modal-overlay" id="size-modal" onclick="closeSizeModal()">
@@ -160,49 +176,6 @@
   </div>
 </div>
 
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="about-text">
-    <div class="section-tag">Hakkında</div>
-    <h2>Moda ile<br><em>teknolojiyi</em><br>buluşturuyoruz</h2>
-    <p>Meli, çiçek yapılarından ilham alarak doğanın izlerini çantalara taşıyor. 3D baskı ile üretilen heykelsi formlar, hem zarif hem de işlevsel bir deneyim sunuyor.</p>
-    <a href="https://instagram.com/meli_handbags" target="_blank" class="btn-outline">@meli_handbags</a>
-  </div>
-  <div class="about-flowers">
-    <div class="big-flower">✿</div>
-    <div class="med-flower">❀</div>
-    <div class="sm-flower">✾</div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="section-header">
-    <div class="section-tag">İletişim</div>
-    <h2 class="section-title">İletişimde Kalalım</h2>
-  </div>
-  <div class="contact-cards">
-    <a href="https://instagram.com/meli_handbags" target="_blank" class="contact-card">
-      <div class="contact-icon">📷</div>
-      <div class="contact-label">Instagram</div>
-      <div class="contact-value">@meli_handbags</div>
-    </a>
-<a href="mailto:melihandbag@gmail.com" class="contact-card">
-      <div class="contact-icon">✉️</div>
-      <div class="contact-label">E-posta</div>
-      <div class="contact-value">melihandbag@gmail.com</div>
-    </a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-logo">meli<span>✿</span></div>
-  <p>© 2025 Meli Handbags. Tüm hakları saklıdır.</p>
-</footer>
-
 <script src="app.js"></script>
 </body>
 </html>
-
-
