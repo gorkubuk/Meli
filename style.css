@@ -1,4 +1,4 @@
-﻿﻿*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+﻿﻿﻿*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
   --cream: #faf5ef;
@@ -54,7 +54,7 @@ body {
 
 /* HERO */
 .hero {
-  min-height: 100vh;
+  min-height: 60vh;
   display: flex; align-items: center; justify-content: center;
   position: relative; overflow: hidden;
   background: linear-gradient(135deg, #faf5ef 0%, #fde8f1 50%, #f5e6f8 100%);
@@ -353,5 +353,6 @@ body {
   .contact { padding: 60px 20px; }
   .cart-drawer { width: 100vw; }
 }
+
 
 
