@@ -51,7 +51,7 @@ const PRODUCTS = [
     id: 'midnight',
     name: 'Midnight',
     filament: 'Magic Silk Black–Blue',
-    img: null,
+    img: 'images/part-form.png',
     gradient: 'linear-gradient(135deg, #0f172a, #1e3a5f, #1e40af)',
     soon: true,
   },
@@ -196,10 +196,16 @@ function orderWhatsApp() {
   window.open(`https://wa.me/905075829209?text=${msg}`, '_blank');
 }
 
-function checkoutWhatsApp() {
+function checkoutEmail() {
   if (cart.length === 0) return;
-  const msg = buildWhatsAppMessage(cart);
-  window.open(`https://wa.me/905075829209?text=${msg}`, '_blank');
+  const lines = cart.map(item =>
+    `- Meli ${item.product.name} / ${item.sizeLabel} / ${item.price.toLocaleString('tr-TR')} TL`
+  );
+  const total = cart.reduce((s, i) => s + i.price, 0);
+  const body = encodeURIComponent(
+    `Merhaba,\n\nAşağıdaki ürünleri sipariş vermek istiyorum:\n\n${lines.join('\n')}\n\nToplam: ${total.toLocaleString('tr-TR')} TL\n\nTeşekkürler`
+  );
+  window.location.href = `mailto:melihandbag@gmail.com?subject=Sipariş&body=${body}`;
 }
 
 renderProducts();
